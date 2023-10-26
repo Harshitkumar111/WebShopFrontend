@@ -20,11 +20,13 @@ import {MatListModule} from '@angular/material/list';
 
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DemoComponent } from './demo/demo.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
