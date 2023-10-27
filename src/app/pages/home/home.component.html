@@ -1,1 +1,13 @@
-<p>home works!</p>
+<mat-drawer-container [autosize]="true" class="min-h-full max-auto border-x">
+    <mat-drawer mode="side" opened class="p-6">
+        <!-- <div>Filter</div> -->
+        <app-filters (showCategory)="onShowCategory($event)"></app-filters>
+    </mat-drawer>
+    <mat-drawer-content class="p-6">
+        <app-product-header (columnsCountChange)="onColumnsUpdate($event)"></app-product-header>
+        <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
+            <mat-grid-tile></mat-grid-tile>
+        </mat-grid-list>
+    </mat-drawer-content>
+</mat-drawer-container>
+ 
