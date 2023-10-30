@@ -38,10 +38,25 @@ displayedColumns:Array<string>=[
 constructor(private cartService: CartService){}
 
 ngOnInit(): void {
-  this.dataSource = this.cart.items;
+  this.cartService.cart.subscribe((_cart:Cart)=>{
+    this.cart=_cart;
+    this.dataSource = this.cart.items;
+  });
 }
 getTotal(items:Array<CartItem>): number{
   return this.cartService.getTotal(items);
+}
+onCleartCart(): void{
+  this.cartService.clearCart();
+}
+onRemoveFromCart(item:CartItem): void{
+ this.cartService.removeFromCart(item);
+}
+onaddQuantity(item :CartItem): void{
+  this.cartService.addToCart(item);
+}
+onremoveQuantity(item: CartItem): void{
+  this.cartService.removeQuantity(item);
 }
 
 }

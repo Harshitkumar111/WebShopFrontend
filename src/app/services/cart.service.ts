@@ -31,4 +31,35 @@ export class CartService {
       duration:3000
     });
   }
+  removeQuantity(item: CartItem): void{
+    let itemForRemoval : CartItem | undefined;
+    let filterItem = this.cart.value.items.map((_item)=>{
+      if(_item.id ===item.id){
+        _item.quantity--;
+        if(_item.quantity ===0){
+          itemForRemoval = _item;
+        }
+      }
+      return _item;
+    });
+    if(itemForRemoval){
+      filterItem =  this.removeFromCart(itemForRemoval);
+    }
+    this.cart.next({items: filterItem});
+    this._snackBar.open('i item removed fro cart.', 'Ok',{
+      duration:3000
+    })
+  }
+  removeFromCart(item:CartItem,update = true): Array<CartItem>{
+    const filteredItem = this.cart.value.items.filter(
+      (_item)=> _item.id !==item.id
+    );
+    if(update){
+      this.cart.next({items:filteredItem});
+      this._snackBar.open('1 item removed from cart','Ok',{
+        duration:3000
+      });
+    }
+    return filteredItem;
+  }
 }
