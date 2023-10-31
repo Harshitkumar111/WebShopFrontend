@@ -9,7 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class HeaderComponent  {
   private _cart: Cart ={items: []};
-  itemsQuantity =0;
+  itemsQuantity = 0;
   constructor(private cartService: CartService){
     
   }

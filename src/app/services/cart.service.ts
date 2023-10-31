@@ -11,15 +11,15 @@ export class CartService {
   constructor(private _snackBar: MatSnackBar) { }
   addToCart(item:CartItem): void{
     const items = [...this.cart.value.items];
-    const itemInCart = items.find((_item)=>_item.id);
+    const itemInCart = items.find((_item)=>_item.id===item.id);
     if(itemInCart){
-      itemInCart.quantity +=1;
+      itemInCart.quantity += 1;
     }else{
       items.push(item);
     }
     this.cart.next({items});
     this._snackBar.open('1 item added to cart.','Ok',{duration:3000});
-    console.log(this.cart.value);
+    // console.log(this.cart.value);  
   }
   getTotal(items:Array<CartItem>): number{
     return items.
@@ -60,6 +60,5 @@ export class CartService {
         duration:3000
       });
     }
-    return filteredItem;
-  }
+    return filteredItem;  }
 }
